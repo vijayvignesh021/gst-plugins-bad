@@ -11,7 +11,7 @@ if openexr_dep.found()
     if cxx.has_argument('-Werror') and cxx.check_header('ImfRgbaFile.h', dependencies: openexr_dep)
       if not cxx.check_header('ImfRgbaFile.h', dependencies: openexr_dep, args: '-Werror')
         # If setting -std to c++98 fixes it, use that! Else, warn.
-        if cxx.check_header('ImfRgbaFile.h', dependencies: openexr_dep, args: ['-Werror', '-std=c++98'])
+        if cxx.check_header('ImfRgbaFile.h', dependencies: openexr_dep, args: ['-Werror', '-std=c++11'])
           openexr_override_options = ['cpp_std=c++98']
         else
           warning('openexr headers can\'t be included with \'-Werror\', and no workaround found')
